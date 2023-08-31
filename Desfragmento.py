@@ -2,7 +2,6 @@ import random
 import hashlib
 import tkinter as tk
 from tkinter import ttk
-import barra%29#Hash-7
 
 class KeyGenerationApp:
     def __init__(self, root):
