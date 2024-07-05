@@ -1,0 +1,5 @@
+Vcard,TimeStamp
+[object HTMLInputElement] : 
+Fazer (upgrade) do PIP no Python
+================================
+python -m pip install --upgrade pip
