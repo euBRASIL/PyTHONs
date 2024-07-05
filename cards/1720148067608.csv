@@ -1,0 +1,140 @@
+Vcard,TimeStamp
+iNFO@Python,1720148067608
+Criar um novo Ambiente Virtual
+==============================
+pipenv --three
+
+from numba import jit, njit
+
+@jit(nopython=true) ou @njit
+
+
+Fazer (upgrade) do PIP no Python
+================================
+python -m pip install --upgrade pip
+
+
+Gerar .EXE com o código Python
+==============================
+pyinstaller --onefile -w(windowed) arquivo.py
+
+
+Ofuscar código Python
+=====================
+pip install pyarmor
+pyarmor obfuscate arquivo.py
+
+Licenciar ( Mac-address / chave de licença )
+============================================
+pyarmor license --expired 2023-01-01 R001(exemplo)
+
+
+Instalar o PiP de Python 
+========================
+start /w python get-pip.py
+
+pip freeze > requirements.txt
+
+
+Visualizar | Instalações PIP
+============================
+pip show << nome da biblioteca >>
+
+
+Instalar | Jupyter Notebook
+===========================
+pip install jupyter
+
+Converter DataFrame em Python >> JSON
+=====================================
+import numpy as np
+import pandas as pd
+  
+data = np.array([['1', '2'], ['3', '4']])
+  
+dataFrame = pd.DataFrame(data, columns = ['col1', 'col2'])
+json = dataFrame.to_json()
+print(json)
+
+
+Desinstalar Bibliotecas Python
+=======================================
+pip uninstall -r requirementsp.txt -y
+
+Gravar código de Jupyter Python em HTML ( uso de ploty )
+========================================================
+fig.write_html('teste.html')
+
+
+variavel = ["valor1", "valor2", "valor3", "valor4" ]
+variavel[0] #lista o valor1
+variavel[1] #lista o valor2
+variavel[2] #lista o valor3
+variavel[3] #lista o valor4
+
+variavel[-1] #lista o ultimo valor neste caso o valor4
+
+: é o mesmo que abrir uma {}, só o que o Python utiliza as tabulações
+
+Métodos em ARRAYs
+=================
+https://prnt.sc/g5fAOIRK7XQf
+
+
+Instalar via Github
+===================
+pip install git+https://github.com/django-haystack/django-haystack.git
+
+Instalar o Twilio ( enviar SMS em Python )
+==========================================
+
+
+converter numero em string em Python
+====================================
+m1 ="45"
+m2 = 45
+m3 = str(m2) converter número para string
+m4 = int(m1) converter string para número
+
+Tecnologias em Python
+=====================
+SDL, ou Simple DirectMedia Layer, é também uma biblioteca multiplataforma. ( Pygame )
+
+O Web Server Gateway Interface, em português Interface de Porta de Entrada do Servidor Web, é uma especificação para uma interface simples e universal entre servidores web e aplicações web ou frameworks para a linguagem de programação Python.
+
+PyScript
+========
+  <head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+
+
+<py-script>
+
+</py-script>
+
+Versoes | Jypiter / Console Google
+==================================
+altgraph==0.17.3
+base58==2.1.1
+click==8.1.3
+colorama==0.4.6
+dlib==19.24.0
+face-recognition==1.3.0
+face-recognition-models==0.3.0
+future==0.18.2
+numpy==1.24.1
+opencv-python==4.7.0.68
+pefile==2022.5.30
+Pillow==9.4.0
+pyinstaller==5.7.0
+pyinstaller-hooks-contrib==2022.14
+PyQt5==5.15.7
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.11.0
+pywin32-ctypes==0.2.0
+
+Resolver "problema" de DLL (TensorFlow) IA
+==========================================
+pip install tensorflow==2.12.0 --upgrade (lembre-se de remover o tensorflow)
