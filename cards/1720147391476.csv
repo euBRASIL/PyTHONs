@@ -1,0 +1,5 @@
+Vcard,TimeStamp
+Gerar#EXE,1720147391476
+Gerar .EXE com o código Python
+==============================
+pyinstaller --onefile -w(windowed) arquivo.py
