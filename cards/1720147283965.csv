@@ -1,0 +1,42 @@
+Vcard,TimeStamp
+I@Golem,${timestamp}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Dicionário para GitHub</title>
+</head>
+<body>
+    <h1>Upload de Dicionário para GitHub</h1>
+    <form id="uploadForm">
+        <textarea id="dictionary" rows="10" cols="50" placeholder="Insira o dicionário Python em formato JSON aqui..."></textarea>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const dictionary = document.getElementById('dictionary').value;
+
+            fetch('http://localhost:5000/upload', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: dictionary
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar o arquivo.');
+            });
+        });
+    </script>
+</body>
+</html>
