@@ -1,0 +1,22 @@
+Vcard,TimeStamp
+Espiral_Xadrez,${Date.now()}
+def print_spiral(number):
+    spiral = [[' ' for _ in range(8)] for _ in range(8)]
+
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    x, y = 0, 0
+    direction_index = 0
+
+    for digit in str(number):
+        spiral[x][y] = digit
+        dx, dy = directions[direction_index]
+        new_x, new_y = x + dx, y + dy
+        if 0 <= new_x < 8 and 0 <= new_y < 8 and spiral[new_x][new_y] == ' ':
+            x, y = new_x, new_y
+        else:
+            direction_index = (direction_index + 1) % 4
+            dx, dy = directions[direction_index]
+            x, y = x + dx, y + dy
+
+    for row in spiral:
+        print(" ".join(row))
