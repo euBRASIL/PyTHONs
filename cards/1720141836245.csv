@@ -1,0 +1,9 @@
+Vcard,TimeStamp
+[object HTMLTextAreaElement] : 
+Criar um novo Ambiente Virtual
+==============================
+pipenv --three
+
+from numba import jit, njit
+
+@jit(nopython=true) ou @njit
