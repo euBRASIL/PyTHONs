@@ -1,0 +1,233 @@
+T:\Python310>python banco-bits@saltar.py
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:32:18<00:00, 1805.64chaves/s]
+Progresso:   2%|█                                                    | 196905/10000000 [01:50<1:28:25, 1847.63chaves/s]
+Chave Privada (hexadecimal)  : 0000000000000000000000000000000000000000000000036666666606af8611
+Endereço Bitcoin  (credito)  : 13z3MhDbiWEd9SiWJZEWMUY3rdXVMqY5Ry
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 31 bits
+
+Distância (decimal) :  62718929849015754993
+Progresso:  28%|██████████████▎                                     | 2758634/10000000 [25:01<1:06:01, 1828.15chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666085d85bb
+Endereço Bitcoin  (credito)  : 13VN8rxbQssCF67Zu2vp2Whgn1EAJgZ53r
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 33 bits
+
+Distância (decimal) :  62718929849043935387
+Progresso:  98%|██████████████████████████████████████████████████▉ | 9790080/10000000 [1:30:30<01:58, 1773.98chaves/s]
+Chave Privada (hexadecimal)  : 000000000000000000000000000000000000000000000003666666660cf9b358
+Endereço Bitcoin  (credito)  : 13hh4hNx4pcjeSWaTHEn8GeuZjNvpU539p
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 34 bits
+
+Distância (decimal) :  62718929849121279544
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:32:27<00:00, 1802.59chaves/s]
+Progresso:   8%|████▍                                                | 834044/10000000 [07:50<1:26:56, 1757.26chaves/s]
+Chave Privada (hexadecimal)  : 000000000000000000000000000000000000000000000003666666660da8f065
+Endereço Bitcoin  (credito)  : 133WZhjbEQa82ScMuX8MuG3uCh8mSxcpZo
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 32 bits
+
+Distância (decimal) :  62718929849132763973
+Progresso: 100%|████████████████████████████████████████████████████| 10000000/10000000 [9:01:18<00:00, 307.90chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:33:46<00:00, 1777.26chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:34:45<00:00, 1758.77chaves/s]
+Progresso:  12%|██████▏                                             | 1197796/10000000 [11:01<1:23:41, 1752.75chaves/s]
+Chave Privada (hexadecimal)  : 0000000000000000000000000000000000000000000000036666666621916183
+Endereço Bitcoin  (credito)  : 13WW1kNbCVecRMW3Tjvsni21gdnCsdmXVb
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 29 bits
+
+Distância (decimal) :  62718929849466764387
+Progresso:  56%|██████████████████████████████▍                       | 5647856/10000000 [52:56<39:10, 1851.55chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666247c4f1d
+Endereço Bitcoin  (credito)  : 13ztmtsbWA6JMUBXndddMJ4gMdcupfURsc
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 34 bits
+
+Distância (decimal) :  62718929849515715069
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:34:19<00:00, 1766.99chaves/s]
+Progresso:   3%|█▍                                                   | 259536/10000000 [02:25<1:29:26, 1815.21chaves/s]
+Chave Privada (hexadecimal)  : 0000000000000000000000000000000000000000000000036666666627825e71
+Endereço Bitcoin  (credito)  : 13qBYqiJWhu12Wr9DXut2GnWnsNhAurosJ
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 33 bits
+
+Distância (decimal) :  62718929849566443857
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:13<00:00, 1750.31chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:37<00:00, 1743.00chaves/s]
+Progresso:  71%|████████████████████████████████████▋               | 7050190/10000000 [1:07:15<27:29, 1788.06chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666391319a2
+Endereço Bitcoin  (credito)  : 13CPU9ZJm5HJ27xodZoPFXMumVPNpdq5jA
+Percentual de Correspondência: 29.41%
+
+Conta(bits): 31 bits
+
+Distância (decimal) :  62718929849861141634
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:16<00:00, 1731.18chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:33:51<00:00, 1775.60chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:45:36<00:00, 1578.19chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:41<00:00, 1741.58chaves/s]
+Progresso:  57%|██████████████████████████████▋                       | 5681996/10000000 [53:49<42:24, 1697.18chaves/s]
+Chave Privada (hexadecimal)  : 0000000000000000000000000000000000000000000000036666666652675151
+Endereço Bitcoin  (credito)  : 134qQ4vRc6d7R67jzZwe1H4TnKNdBxs5Go
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 32 bits
+
+Distância (decimal) :  62718929850286091313
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:41<00:00, 1741.69chaves/s]
+Progresso:  85%|████████████████████████████████████████████        | 8476631/10000000 [1:22:16<15:24, 1648.42chaves/s]
+Chave Privada (hexadecimal)  : 000000000000000000000000000000000000000000000003666666665acade0e
+Endereço Bitcoin  (credito)  : 13Tg1hdtftxqSSCaTDkkoGdA45hE9UQ5Zo
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 35 bits
+
+Distância (decimal) :  62718929850426833134
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:56<00:00, 1719.13chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:34:28<00:00, 1764.06chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:41<00:00, 1723.82chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:58<00:00, 1736.60chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:29<00:00, 1745.31chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:25<00:00, 1728.35chaves/s]
+Progresso:  35%|██████████████████▉                                   | 3506370/10000000 [41:17<58:55, 1836.84chaves/s]
+Chave Privada (hexadecimal)  : 000000000000000000000000000000000000000000000003666666667edf67f4
+Endereço Bitcoin  (credito)  : 13z1NfnGWV4TuS1ZK9ZhJGYuJGTzhWbwVn
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 41 bits
+
+Distância (decimal) :  62718929851032158932
+Progresso:  84%|███████████████████████████████████████████▌        | 8387240/10000000 [1:28:48<15:26, 1740.29chaves/s]
+Chave Privada (hexadecimal)  : 000000000000000000000000000000000000000000000003666666668212a7a1
+Endereço Bitcoin  (credito)  : 135b1xQhdYWk2DYfAZnriH4wuQiVd8Rhpb
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 30 bits
+
+Distância (decimal) :  62718929851085849217
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:43:59<00:00, 1602.66chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:12<00:00, 1732.42chaves/s]
+Progresso:  92%|███████████████████████████████████████████████▊    | 9200840/10000000 [1:42:21<07:11, 1852.50chaves/s]
+Chave Privada (hexadecimal)  : 000000000000000000000000000000000000000000000003666666668fb82315
+Endereço Bitcoin  (credito)  : 13sEMTTg69sJMSDZydngvGV1tDQEpEhbEp
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 33 bits
+
+Distância (decimal) :  62718929851314798069
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:50:21<00:00, 1510.27chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:28<00:00, 1727.47chaves/s]
+Progresso:  44%|███████████████████████▋                              | 4378892/10000000 [42:52<55:49, 1678.20chaves/s]
+Chave Privada (hexadecimal)  : 0000000000000000000000000000000000000000000000036666666699abbcd4
+Endereço Bitcoin  (credito)  : 13BkKCdbTVsy9b7cT5GMjnpefbN3ewyesG
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 36 bits
+
+Distância (decimal) :  62718929851481757620
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:37:20<00:00, 1712.16chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [2:11:30<00:00, 1267.35chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:41<00:00, 1741.85chaves/s]
+Progresso:  66%|██████████████████████████████████▍                 | 6624313/10000000 [1:03:00<30:39, 1834.65chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666aed002d3
+Endereço Bitcoin  (credito)  : 13Cd6hJgKRnA2agLWRJRdGvNvd2NwdheGA
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 32 bits
+
+Distância (decimal) :  62718929851836456371
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:34:23<00:00, 1765.78chaves/s]
+Progresso:  72%|█████████████████████████████████████▎              | 7184497/10000000 [7:08:57<25:57, 1807.92chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666b5bc8575
+Endereço Bitcoin  (credito)  : 13zVcPmUodeFAx74pKMbVGaQWr9rsdh5sE
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 36 bits
+
+Distância (decimal) :  62718929851952619605
+Progresso: 100%|████████████████████████████████████████████████████| 10000000/10000000 [7:35:15<00:00, 366.10chaves/s]
+Progresso:  11%|█████▊                                              | 1123456/10000000 [10:13<1:22:42, 1788.56chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666b851a727
+Endereço Bitcoin  (credito)  : 133bDhwQvVSWT6LsU2rYPGLknpNN2XcUzx
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 34 bits
+
+Distância (decimal) :  62718929851995947527
+Progresso:  38%|████████████████████▌                                 | 3813457/10000000 [35:22<57:51, 1782.15chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666ba15281a
+Endereço Bitcoin  (credito)  : 13Keff1bKeVzgrei3dnP2GernryWp41WY9
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 31 bits
+
+Distância (decimal) :  62718929852025537274
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:32:37<00:00, 1799.30chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:33:49<00:00, 1776.51chaves/s]
+Progresso:  43%|███████████████████████▏                              | 4294680/10000000 [40:48<57:01, 1667.64chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666c782dce9
+Endereço Bitcoin  (credito)  : 13eZgN3kzfXncSFZDZPVuGSuKhMNpcC6q2
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 35 bits
+
+Distância (decimal) :  62718929852250830793
+Progresso:  73%|█████████████████████████████████████▊              | 7267408/10000000 [1:09:30<26:30, 1717.95chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666c975d653
+Endereço Bitcoin  (credito)  : 13Ed1bQmsKxX3Sv8TwcwcpennKNzZt9zEo
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 36 bits
+
+Distância (decimal) :  62718929852283531571
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:48<00:00, 1739.62chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:37:14<00:00, 1713.95chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:40:21<00:00, 1660.77chaves/s]
+Progresso:  82%|██████████████████████████████████████████▍         | 8166641/10000000 [1:21:42<16:31, 1848.82chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666ddb8261d
+Endereço Bitcoin  (credito)  : 13Qv1TfQmCNoHS7nLFRig3H2n6hNgvhPsS
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 35 bits
+
+Distância (decimal) :  62718929852623421693
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:39:06<00:00, 1681.59chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:37:09<00:00, 1715.45chaves/s]
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:38:29<00:00, 1692.29chaves/s]
+Progresso:   5%|██▊                                                  | 541483/10000000 [05:11<1:32:22, 1706.40chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666ec63b5f6
+Endereço Bitcoin  (credito)  : 13QgShQybV9PtrKZTZjFRkLgHdSamsTmt2
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 38 bits
+
+Distância (decimal) :  62718929852869546198
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:35:44<00:00, 1740.65chaves/s]
+Progresso:  69%|████████████████████████████████████                | 6945337/10000000 [1:07:21<28:52, 1762.84chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666f7250d83
+Endereço Bitcoin  (credito)  : 13zxiqebiwXaXatBmpnezLVuFGqNadhWk9
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 34 bits
+
+Distância (decimal) :  62718929853049989219
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:36:07<00:00, 1734.00chaves/s]
+Progresso:  39%|████████████████████▊                                 | 3864972/10000000 [35:43<56:27, 1811.31chaves/s]
+Chave Privada (hexadecimal)  : 00000000000000000000000000000000000000000000000366666666fbae77e8
+Endereço Bitcoin  (credito)  : 13TizMdAFxjo2xiZQZwP2G4y5UX8Nq2ECv
+Percentual de Correspondência: 26.47%
+
+Conta(bits): 40 bits
+
+Distância (decimal) :  62718929853126103752
+Progresso: 100%|███████████████████████████████████████████████████| 10000000/10000000 [1:30:47<00:00, 1835.74chaves/s]
+Progresso: 100%|█████████████████████████████████████████████████████████| 451573/451573 [03:58<00:00, 1895.82chaves/s]
