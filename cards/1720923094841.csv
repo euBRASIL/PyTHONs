@@ -1,0 +1,13 @@
+Vcard,TimeStamp
+Trilhas#HTML5,1720923094841
+<style>
+		.disk0 { position: relative; width: 475px; height: 475px; border: 1px solid black; border-radius: 50%; }
+        .disk8 { position: relative; width: 425px; height: 425px; border: 1px solid black; border-radius: 50%; }
+		.disk7 { position: relative; width: 375px; height: 375px; border: 1px solid black; border-radius: 50%; }
+		.disk6 { position: relative; width: 325px; height: 325px; border: 1px solid black; border-radius: 50%; }
+		.disk5 { position: relative; width: 275px; height: 275px; border: 1px solid black; border-radius: 50%; }
+		.disk4 { position: relative; width: 225px; height: 225px; border: 1px solid black; border-radius: 50%; }
+		.disk3 { position: relative; width: 175px; height: 175px; border: 1px solid black; border-radius: 50%; }
+		.disk2 { position: relative; width: 125px; height: 125px; border: 1px solid black; border-radius: 50%; }
+		.disk1 { position: relative; width:  75px; height:  75px; border: 1px solid black; border-radius: 50%; }
+</style>
