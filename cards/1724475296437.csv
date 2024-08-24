@@ -1,0 +1,99 @@
+Vcard,TimeStamp
+Matriz-9x8,1724475296437
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from ipywidgets import interact, IntSlider
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def number_to_matrix(number):
+    if number < 2**65 or number >= 2**66:
+        raise ValueError("O número deve estar no intervalo [2^65, 2^66).")
+    # Converte o número para sua representação binária de 72 bits
+    binary_str = format(number, '072b')
+    # Cria uma matriz 9x8 a partir da string binária
+    matrix = np.array([int(bit) for bit in binary_str]).reshape((9, 8))
+    return matrix
+
+def matrix_to_number(matrix):
+    if matrix.shape != (9, 8):
+        raise ValueError("A matriz deve ter dimensões 9x8.")
+    binary_str = ''.join(str(int(bit)) for bit in matrix.flatten())
+    number = int(binary_str, 2)
+    return number
+
+def normalize_number(number):
+    min_val = 2**65
+    max_val = 2**66 - 1
+    normalized = (number - min_val) / (max_val - min_val)
+    return normalized
+
+def apply_sigmoid_to_number(number):
+    normalized = normalize_number(number)
+    sigmoid_value = sigmoid(normalized)
+    return sigmoid_value
+
+def plot_binary_matrix(matrix, title="Matriz Binária 9x8"):
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(matrix, annot=True, cbar=False, cmap="Blues", linewidths=0.5, linecolor='black')
+    plt.title(title)
+    plt.xlabel("Colunas")
+    plt.ylabel("Linhas")
+    plt.show()
+
+def plot_sigmoid_matrix(matrix, title="Matriz Após Aplicação da Sigmoide"):
+    sigmoid_matrix = sigmoid(matrix)
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(sigmoid_matrix, annot=True, cbar=True, cmap="viridis", linewidths=0.5, linecolor='black')
+    plt.title(title)
+    plt.xlabel("Colunas")
+    plt.ylabel("Linhas")
+    plt.show()
+
+def generate_random_number():
+    return random.randint(2**65, 2**66 - 1)
+
+
+def process_and_visualize():
+    # Gerar número aleatório
+    number = generate_random_number()
+    print(f"Número original: {number}")
+    
+    # Converter para matriz binária
+    binary_matrix = number_to_matrix(number)
+    plot_binary_matrix(binary_matrix, title="Matriz Binária Original")
+    
+    # Aplicar sigmoide à matriz normalizada
+    normalized_matrix = normalize_number(binary_matrix)
+    plot_sigmoid_matrix(normalized_matrix, title="Matriz Após Normalização e Sigmoide")
+    
+    # Obter valor sigmoide do número total
+    sigmoid_value = apply_sigmoid_to_number(number)
+    print(f"Valor após aplicação da sigmoide ao número normalizado: {sigmoid_value}")
+
+def interactive_process(number):
+    print(f"Número escolhido: {number}")
+    
+    # Converter para matriz binária
+    binary_matrix = number_to_matrix(number)
+    plot_binary_matrix(binary_matrix, title="Matriz Binária Original")
+    
+    # Aplicar sigmoide à matriz normalizada
+    normalized_matrix = normalize_number(binary_matrix)
+    plot_sigmoid_matrix(normalized_matrix, title="Matriz Após Normalização e Sigmoide")
+    
+    # Obter valor sigmoide do número total
+    sigmoid_value = apply_sigmoid_to_number(number)
+    print(f"Valor após aplicação da sigmoide ao número normalizado: {sigmoid_value}")
+    
+# Slider para escolher o número
+min_number = 2**65
+max_number = 2**66 - 1
+
+interact(interactive_process, number=IntSlider(min=min_number, max=max_number, step=1, description="Número"))
+
+
+process_and_visualize()
