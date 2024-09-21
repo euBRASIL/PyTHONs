@@ -1,0 +1,248 @@
+Vcard,TimeStamp
+Buscador-Saldos-Perdidos,1726899378773
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca em Endereços Criptográficos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elliptic/6.5.4/elliptic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .metrics {
+            display: flex;
+            justify-content: center;
+        }
+        .matrix {
+            display: grid;
+            grid-template-columns: repeat(35, 24px);
+            gap: 5px;
+        }
+        .matrix div {
+            text-align: center;
+            padding: 3px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div id="matrixContainer">
+    <div class="metrics">
+        <div id="matrix" class="matrix"></div>
+    </div>
+    <p><strong>Endereço de Bitcoin:</strong> <span id="bitcoinAddress"></span></p>
+    <p><strong>Chaves Encontradas na Sequência:</strong> <span id="foundKeys"></span></p>
+    <p><strong>I@Golem: </strong> <span id="ia"></span></p>
+</div>
+
+<script>
+
+    let targetSequence = '13zb1hQbWVsc2S7ZTZnP2G4undNNpdh5so'.toUpperCase();  // Endereço alvo
+    let posicionar35x = Array(35).fill(0);  // Armazena as contagens de cada posição da sequência
+    let intervals = [];  // Armazena os intervalos onde as letras foram encontradas
+	
+	let painel35x = Array(35).fill(0); // euBRASIL "alterou"
+//-------------------------------------------------------------------------------------------------------------------------//
+        function gerarEnderecoBitcoin() {
+            // Inicializar a curva elíptica (secp256k1)
+            const EC = new elliptic.ec('secp256k1');
+            
+            // Gerar uma chave privada no intervalo de 2^65 até 2^66
+            const minPrivateKey = BigInt(2) ** BigInt(65);
+            const maxPrivateKey = BigInt(2) ** BigInt(66);
+            
+            // Gerar uma chave privada aleatória nesse intervalo
+            const privateKeyBigInt = minPrivateKey + BigInt(Math.floor(Math.random() * Number(maxPrivateKey - minPrivateKey)));
+            const privateKeyHex = privateKeyBigInt.toString(16).padStart(64, '0');
+            
+            // Criar um par de chaves usando a chave privada gerada
+            const keyPair = EC.keyFromPrivate(privateKeyHex);
+            const publicKeyHex = keyPair.getPublic().encode('hex');
+
+            // Função para converter hexadecimal para Array de Bytes
+            function hexToBytes(hex) {
+                let bytes = [];
+                for (let i = 0; i < hex.length; i += 2) {
+                    bytes.push(parseInt(hex.substr(i, 2), 16));
+                }
+                return bytes;
+            }
+			
+            // Função para codificação Base58
+            function encodeBase58(buffer) {
+                const alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+                let str = '';
+                let num = BigInt('0x' + buffer.map(byte => byte.toString(16).padStart(2, '0')).join(''));
+                while (num > 0) {
+                    const mod = num % 58n;
+                    str = alphabet[Number(mod)] + str;
+                    num = num / 58n;
+                }
+                // Adicionar os caracteres '1' para os zeros à esquerda
+                for (let i = 0; i < buffer.length && buffer[i] === 0; i++) {
+                    str = '1' + str;
+                }
+                return str;
+            }
+
+            // Passo 1: SHA-256 da chave pública
+            const sha256Hash = CryptoJS.SHA256(CryptoJS.enc.Hex.parse(publicKeyHex)).toString(CryptoJS.enc.Hex);
+
+            // Passo 2: RIPEMD-160 do hash SHA-256
+            const ripemd160Hash = CryptoJS.RIPEMD160(CryptoJS.enc.Hex.parse(sha256Hash)).toString(CryptoJS.enc.Hex);
+
+            // Passo 3: Adicionar o prefixo '00' (para endereços Mainnet)
+            const versionedPayload = '00' + ripemd160Hash;
+
+            // Passo 4: SHA-256 duas vezes para gerar o checksum
+            const checksum = CryptoJS.SHA256(CryptoJS.SHA256(CryptoJS.enc.Hex.parse(versionedPayload))).toString(CryptoJS.enc.Hex).substr(0, 8);
+
+            // Passo 5: Concatenar o checksum ao payload versionado
+            const fullPayload = versionedPayload + checksum;
+
+            // Passo 6: Converter para Base58 para obter o endereço de Bitcoin
+            const buffer = hexToBytes(fullPayload);
+            const bitcoinAddress = encodeBase58(buffer);
+			
+			// Gerar Matriz( 9x8 ): 255-255-255-255-255-255-255-255-255 .html
+            const matriz = [];
+            for (let i = 0; i < 9; i++) {
+                const byte = Math.floor(Math.random() * 256); // Gera um número aleatório de 0 a 255
+                matriz.push(byte);
+            }
+			urlmatriz = `http://${matriz.join('-')}.example.com`;
+//-------------------------------------------------------------------------------------------------------------------------//
+
+
+
+        // Exibir o endereço gerado
+        document.getElementById("bitcoinAddress").textContent = bitcoinAddress;
+
+        // Resetar os intervalos
+        intervals = [];
+
+        // Executar a busca de correspondências com a sequência
+        buscarNaSequencia(bitcoinAddress);
+		
+		}
+
+    // Função para converter hexadecimal em bytes
+    function hexToBytes(hex) {
+        let bytes = [];
+        for (let i = 0; i < hex.length; i += 2) {
+            bytes.push(parseInt(hex.substr(i, 2), 16));
+        }
+        return bytes;
+    }
+
+    // Função para codificar em Base58
+    function encodeBase58(buffer) {
+        const alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+        let str = '';
+        let num = BigInt('0x' + buffer.map(byte => byte.toString(16).padStart(2, '0')).join(''));
+        while (num > 0) {
+            const mod = num % 58n;
+            str = alphabet[Number(mod)] + str;
+            num = num / 58n;
+        }
+        return str;
+    }
+
+    // Função para buscar a sequência no endereço gerado
+    function buscarNaSequencia(address) {
+        const upperAddress = address.toUpperCase();  // Para comparar em maiúsculas
+        let foundCount = 0;
+
+        // Resetar as contagens
+        // posicionar35x.fill(0);
+
+        for (let i = 0; i < upperAddress.length; i++) {
+		
+            const char = upperAddress[i];
+			
+			if (address.startsWith("13")) {
+			
+				// Se o caractere corresponde à sequência desejada
+				if (char === targetSequence[foundCount]) {
+					if (posicionar35x[foundCount] < 99 ) { painel35x[foundCount]++; }
+					
+						posicionar35x[foundCount]++;
+						intervals.push(`Posição ${i}: ${char}`);
+						foundCount++;
+						console.log(`Posição ${i}: ${char}`);
+				}
+
+				// Se todas as letras foram encontradas ele sai deste loop "infinito"
+				if (foundCount === targetSequence.length) { break; }
+			
+			}
+			
+			document.getElementById("foundKeys").textContent = posicionar35x;
+			document.getElementById("ia").textContent = 
+			`|${posicionar35x[0]}|,`  +
+			`|${posicionar35x[1]}|,`  +
+			`|${posicionar35x[2]}|,`  +
+			`|${posicionar35x[3]}|,`  +
+			`|${posicionar35x[4]}|,`  +
+			`|${posicionar35x[5]}|,`  +
+			`|${posicionar35x[6]}|,`  +
+			`|${posicionar35x[7]}|,`  +
+			`|${posicionar35x[8]}|,`  +
+			`|${posicionar35x[9]}|,`  +
+			`|${posicionar35x[10]}|,` +
+			`|${posicionar35x[11]}|,` +
+			`|${posicionar35x[12]}|,` +
+			`|${posicionar35x[13]}|,` +
+			`|${posicionar35x[14]}|,` +
+			`|${posicionar35x[15]}|,` +
+			`|${posicionar35x[16]}|,` +
+			`|${posicionar35x[17]}|,` +
+			`|${posicionar35x[18]}|,` +
+			`|${posicionar35x[19]}|,` +
+			`|${posicionar35x[20]}|,` +
+			`|${posicionar35x[21]}|,` +
+			`|${posicionar35x[22]}|,` +
+			`|${posicionar35x[23]}|,` +
+			`|${posicionar35x[24]}|,` +
+			`|${posicionar35x[25]}|,` +
+			`|${posicionar35x[26]}|,` +
+			`|${posicionar35x[27]}|,` +
+			`|${posicionar35x[28]}|,` +
+			`|${posicionar35x[29]}|,` +
+			`|${posicionar35x[30]}|,` +
+			`|${posicionar35x[31]}|,` +
+			`|${posicionar35x[32]}|,` +
+			`|${posicionar35x[33]}|,` +
+			`|${posicionar35x[34]}|,` ;
+
+
+        }
+
+        // Atualizar a interface
+        atualizarMatriz();
+        document.getElementById("foundKeys").textContent = foundCount;
+        document.getElementById("intervals").textContent = intervals.join(', ');
+    }
+
+    // Função para atualizar a matriz de contagens
+    function atualizarMatriz() {
+        const matrixDiv = document.getElementById('matrix');
+        matrixDiv.innerHTML = '';  // Limpar a matriz
+
+        painel35x.forEach(count => {
+            const cell = document.createElement('div');
+            cell.textContent = count;
+            matrixDiv.appendChild(cell);
+        });
+    }
+
+    // Loop "infinito"
+    setInterval(gerarEnderecoBitcoin);
+</script>
+
+</body>
+</html>
