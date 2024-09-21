@@ -1,0 +1,84 @@
+Vcard,TimeStamp
+Bitcoin_versao-2,1726899287971
+@echo off
+setlocal
+del *.hex > nul
+:: Gerar chave privada aleatória de 32 bytes (256 bits)
+echo ------------------------------------------------------------------------------- 
+openssl rand -hex 32 > private_key.hex
+set /p PRIVATE_KEY=<private_key.hex
+echo Chave Privada: %PRIVATE_KEY%
+echo -------------------------------------------------------------------------------
+:: Gerar chave pública (formato hexadecimal)
+openssl ecparam -name secp256k1 -genkey -noout -outform PEM | openssl ec -text -noout -conv_form compressed
+openssl ecparam -name secp256k1 -genkey -noout -outform PEM | openssl ec -text -noout -conv_form compressed > public_key.hex
+set /p PUBLIC_KEY=<public_key.hex
+echo Chave Publica: %PUBLIC_KEY%
+echo -------------------------------------------------------------------------------
+:: Hash SHA-256 da chave pública
+openssl dgst -sha256 public_key.hex | findstr /v "SHA2-256" > sha256.hex
+for /f "tokens=2 delims== " %%a in ('openssl dgst -sha256 public_key.hex') do echo %%a > sha256.hex
+set /p SHA256_KEY=<sha256.hex
+echo SHA256: %SHA256_KEY%
+echo -------------------------------------------------------------------------------
+:: Hash RIPEMD-160 do resultado SHA-256
+openssl dgst -ripemd160 sha256.hex | findstr /v "RIPEMD160" > ripemd160.hex
+for /f "tokens=2 delims== " %%a in ('openssl dgst -ripemd160 sha256.hex') do echo %%a > ripemd160.hex
+set /p RIPEMD160_KEY=<ripemd160.hex
+
+
+echo RIPEMD-160: %RIPEMD160_KEY%
+echo -------------------------------------------------------------------------------
+:: Adicionar prefixo de rede 0x00 (para Bitcoin Mainnet)
+echo 00%RIPEMD160_KEY% > hash_with_prefix.hex
+set /p mainetRIPEMD160_KEY=<hash_with_prefix.hex
+echo Mainet prefixo '00': %mainetRIPEMD160_KEY% 
+echo -------------------------------------------------------------------------------
+@echo off
+setlocal enabledelayedexpansion
+
+:: Calcular SHA-256 duas vezes
+openssl dgst -sha256 -binary hash_with_prefix.hex > checksum1.bin
+openssl dgst -sha256 -binary checksum1.bin > checksum2.bin
+
+:: Criar arquivo hexadecimal legível
+certutil -dump checksum2.bin | findstr /r /c:"^[0-9A-F]*" > checksum_temp.txt
+
+:: Verificar se checksum_temp.txt foi criado e contém dados
+if not exist checksum_temp.txt (
+    echo O arquivo checksum_temp.txt não foi criado corretamente.
+    exit /b 1
+)
+
+:: Ler a linha com o checksum
+for /f "tokens=*" %%A in (checksum_temp.txt) do (
+    set line=%%A
+    goto :done
+)
+:done
+
+:: Pegar os primeiros 8 caracteres do checksum (4 bytes)
+set CHECKSUM=%line:~0,8%
+
+:: Exibir o checksum
+echo Checksum: %CHECKSUM%
+
+:: Salvar o checksum em um arquivo .hex para uso posterior
+echo %CHECKSUM% > checksum2.hex
+
+:: Limpar arquivos temporários
+del checksum1.bin
+del checksum2.bin
+del checksum_temp.txt
+
+endlocal
+
+
+
+echo -------------------------------------------------------------------------------
+
+:: Preparar para Base58 (conversão feita via PowerShell)
+echo %HASH_WITH_PREFIX% >> bitcoin_address_full.hex
+echo %CHECKSUM% >> bitcoin_address_full.hex
+echo Gerando address em Base58...
+powershell -Command "& { .\base58.ps1 }"
