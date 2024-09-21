@@ -1,0 +1,137 @@
+Vcard,TimeStamp
+Disco-RIPEMD-160,1726899165590
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Hexadecimal com RIPEMD-160</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .table-container {
+            margin-left: 20px;
+            text-align: left;
+        }
+        input[type="text"] {
+            margin-bottom: 20px;
+            width: 300px;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <input type="text" id="ripemdInput" placeholder="Insira a chave RIPEMD-160">
+            <button onclick="processKey()">Processar Chave</button>
+            <canvas id="hddCanvas" width="500" height="500"></canvas>
+        </div>
+        <div class="table-container">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>&nbsp;Magnitude&nbsp;</th>
+                        <th>&nbsp;Setor&nbsp;</th>
+                        <th>&nbsp;Resolução Matemática&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody id="sectorTableBody">
+                    <!-- Linhas de setores serão adicionadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('hddCanvas');
+        const ctx = canvas.getContext('2d');
+        const sectorTableBody = document.getElementById('sectorTableBody');
+
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const numTracks = 10;
+        const numSectors = 16;
+        const maxRadius = Math.min(centerX, centerY) - 10;
+        let sectorColors = Array.from({ length: numTracks }, () =>
+            Array(numSectors).fill('#ffffff')
+        );
+
+        function drawDisk() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Desenhar trilhas
+            for (let i = 1; i <= numTracks; i++) {
+                const radius = (maxRadius / numTracks) * i;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+
+            // Desenhar setores
+            for (let i = 0; i < numSectors; i++) {
+                const startAngle = (2 * Math.PI / numSectors) * i - Math.PI / 2;
+                const endAngle = startAngle + (2 * Math.PI / numSectors);
+                for (let j = 0; j < numTracks; j++) {
+                    const innerRadius = (maxRadius / numTracks) * j;
+                    const outerRadius = innerRadius + maxRadius / numTracks;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX + innerRadius * Math.cos(startAngle), centerY + innerRadius * Math.sin(startAngle));
+                    ctx.arc(centerX, centerY, outerRadius, startAngle, endAngle);
+                    ctx.lineTo(centerX + innerRadius * Math.cos(endAngle), centerY + innerRadius * Math.sin(endAngle));
+                    ctx.closePath();
+                    ctx.fillStyle = sectorColors[j][i];
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        }
+
+        function hexToBinary(hex) {
+            return hex.split('').map(h => parseInt(h, 16).toString(2).padStart(4, '0')).join('');
+        }
+
+        function processKey() {
+            const ripemdInput = document.getElementById('ripemdInput').value.trim();
+            if (ripemdInput.length !== 40) {
+                alert("A chave RIPEMD-160 deve ter exatamente 40 caracteres hexadecimais.");
+                return;
+            }
+
+            // Converter chave RIPEMD-160 para binário
+            const binaryKey = hexToBinary(ripemdInput);
+
+            // Preencher os setores de acordo com os bits da chave binária
+            let bitIndex = 0;
+            sectorColors = Array.from({ length: numTracks }, () =>
+                Array(numSectors).fill('#ffffff')
+            ); // Reiniciar as cores
+
+            for (let i = 0; i < numSectors; i++) {
+                for (let j = 0; j < numTracks; j++) {
+                    if (bitIndex < binaryKey.length) {
+                        sectorColors[j][i] = binaryKey[bitIndex] === '1' ? '#00ff00' : '#ffffff';
+                        bitIndex++;
+                    }
+                }
+            }
+
+            drawDisk();
+        }
+
+        drawDisk();
+    </script>
+</body>
+</html>
