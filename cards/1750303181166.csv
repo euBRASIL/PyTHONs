@@ -1,0 +1,24 @@
+Vcard,TimeStamp
+Comandos#Python,1750303181166
+ComandoPython comandos[] = {
+    {"abs", "int/float", "int/float"},
+    {"len", "str/list/tuple/dict", "int"},
+    {"type", "any", "type"},
+    {"print", "any", "None"},
+    {"input", "str", "str"},
+    {"int", "str/float", "int"},
+    {"float", "str/int", "float"},
+    {"str", "any", "str"},
+    {"list", "iterable", "list"},
+    {"dict", "key-value pairs or iterable", "dict"},
+    {"tuple", "iterable", "tuple"},
+    {"set", "iterable", "set"},
+    {"isinstance", "object, type", "bool"},
+    {"sum", "list/tuple of numbers", "number"},
+    {"range", "start, stop, step", "range object"},
+    {"map", "function, iterable", "map object"},
+    {"filter", "function, iterable", "filter object"},
+    {"sorted", "iterable", "list"},
+    {"open", "filename, mode", "file object"},
+    {"help", "module/function/object", "None"}
+};
